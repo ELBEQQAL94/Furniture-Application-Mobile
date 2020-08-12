@@ -9,4 +9,4 @@
 * [x] Install react native elements
 
 ## UI Design:
-[](https://dribbble.com/shots/14000077-Furniture-Application-Mobile)
+[ ](https://dribbble.com/shots/14000077-Furniture-Application-Mobile)

@@ -1,7 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
-const Home = () => <Text style={styles.header}>Products</Text>;
+const Home = () => {
+  return (
+    <View>
+      <Text>Card</Text>
+    </View>
+  )
+};
 
 const styles = StyleSheet.create({
   header: {

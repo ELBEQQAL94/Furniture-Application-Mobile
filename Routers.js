@@ -2,6 +2,8 @@ import React from 'react';
 
 import { StyleSheet, Text, View, } from "react-native";
 import { NativeRouter, Route, Link } from "react-router-native";
+import {
+  Container} from 'native-base';
 
 import { TopBar, SearchForm } from "./components/header";
 import { Home } from "./pages";
@@ -10,12 +12,12 @@ const About = () => <Text style={styles.header}>About</Text>;
 
 const Routers = () => (
   <NativeRouter>
-    <View style={styles.container}>
+    <Container style={styles.container}>
       <TopBar />
       <SearchForm />
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
-    </View>
+    </Container>
   </NativeRouter>
 );
 

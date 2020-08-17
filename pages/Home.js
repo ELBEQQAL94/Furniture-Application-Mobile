@@ -1,40 +1,44 @@
 import React from "react";
-import { Platform, StyleSheet, FlatList, Text, View, Alert, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  FlatList,
+  Text,
+  View,
+  ImageBackground
+} from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Link } from "react-router-native";
+
+// mock data
+import { GridListItems } from "../db/data";
 
 const Home = () => {
-  const GridListItems = [
-    { key: image },
-    { key: image },
-    { key: image },
-    { key: image },
-    { key: image },
-    { key: image },
-    { key: image },
-    { key: image },
-    { key: image },
-  ];
 
-  const GetGridViewItem = (item) => {
-    Alert.alert(item);
-  }
+  return (
 
-  const image = { uri: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" };
-    return (
-
-        <View style={styles.container}>
-         <FlatList
-            data={ GridListItems }
-            renderItem={ ({item}) =>
+      <View style={styles.container}>
+        <FlatList
+          data={ GridListItems }
+          renderItem={ ({item}) =>
             <View style={styles.imageContainer} >
-                      <ImageBackground source={image} style={styles.image} imageStyle={{ borderRadius: 10}}>
-                         <Text style={styles.text}>Inside</Text>
-                       </ImageBackground>
-                     </View> }
-            numColumns={2}
-         />
-       </View>
+              <ImageBackground key={item.id} source={item.image} style={styles.image} imageStyle={{ borderRadius: 20}}>
+                  <Text style={styles.text}>{item.title}</Text>
+                  <Text style={styles.text}>$ {item.price}</Text>
+                  <View style={styles.items}>
+                    <Link to={`/details/${item.id}`}>
+                      <Icon
+                        name="shopping-cart"
+                        size={30}
+                      />
+                    </Link>
+                </View>
+              </ImageBackground>
+            </View>}
+          numColumns={2}
+        />
+      </View>
 
-    );
+  );
 
 }
 
@@ -47,21 +51,25 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 1,
-    marginRight: 10,
-    marginLeft: 10,
+    marginRight: 5,
+    marginLeft: 5,
     marginTop: 20,
+    marginBottom: 20,
     flexDirection: "column",
   },
   image: {
     flex: 1,
     resizeMode: "cover",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     height: 400,
+    padding: 10,
   },
   text: {
     color: "grey",
-    fontSize: 30,
-    fontWeight: "bold"
+    fontSize: 20,
+    textTransform: "capitalize",
+    color: "#fff",
+    marginBottom: 12,
   },
   GridViewContainer: {
     flex:1,
@@ -70,6 +78,19 @@ const styles = StyleSheet.create({
     height: 100,
     margin: 5,
  },
+ items: {
+  width: 50,
+  height: 50,
+  borderRadius: 50,
+  backgroundColor: "#fff",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "absolute",
+  bottom: 0,
+  right: "50%",
+  left: "50%",
+  marginBottom: -30,
+ }
 });
 
 

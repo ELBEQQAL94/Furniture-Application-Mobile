@@ -6,9 +6,7 @@ import {
   Container} from 'native-base';
 
 import { TopBar, SearchForm } from "./components/header";
-import { Home } from "./pages";
-
-const About = () => <Text style={styles.header}>About</Text>;
+import { Home, Details } from "./pages";
 
 const Routers = () => (
   <NativeRouter>
@@ -16,7 +14,7 @@ const Routers = () => (
       <TopBar />
       <SearchForm />
       <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Route path="/details/:productId" component={Details} />
     </Container>
   </NativeRouter>
 );
